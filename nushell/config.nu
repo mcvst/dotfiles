@@ -2,6 +2,16 @@ $env.EDITOR = "nvim"
 
 $env.config.edit_mode = "vi"
 
+alias vi = nvim
+alias vim = nvim
+alias lsa = ls -la
+
+# git aliases
+alias gst = git status
+alias cm = git checkout main
+alias ga = git add
+alias gc = git commit -m
+
 source ~/.cache/carapace/init.nu
 
 use ~/.cache/starship/init.nu
