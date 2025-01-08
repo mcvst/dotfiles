@@ -4,6 +4,7 @@ return {
 		opts = {
 			servers = {
 				nushell = {},
+				marksman = {},
 			},
 		},
 	},
