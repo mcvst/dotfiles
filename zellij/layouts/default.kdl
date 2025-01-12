@@ -17,8 +17,9 @@ layout {
 
                 hide_frame_for_single_pane "true"
 
-                format_left  "{mode}#[fg=$white,bg=$black]  {session} #[fg=$fg,bg=$black]:: {tabs}"
-                format_right "{command_whoami}#[fg=$cyan,bg=$black]::{command_pwd}{datetime}"
+                // format_left  "{mode}#[fg=$white,bg=$black]  {session} #[fg=$fg,bg=$black]:: {tabs}"
+                format_left  "{mode}#[fg=$fg,bg=$black]{tabs}"
+                format_right "#[fg=$cyan,bg=$black]{session} :: {datetime}"
                 format_space "#[bg=$black]"
 
                 mode_normal          "#[fg=$black,bg=$green]  "
@@ -32,13 +33,13 @@ layout {
                 tab_sync_indicator       "  "
                 tab_floating_indicator   "󰉈 "
 
-                command_whoami_command  "whoami"
-                command_whoami_format   "#[fg=$fg,bg=$bg] {stdout} "
-                command_whoami_interval "0"
-
-                command_pwd_command  "pwd"
-                command_pwd_format   "#[fg=$fg,bg=$bg] {stdout} "
-                command_pwd_interval "20"
+                // command_whoami_command  "whoami"
+                // command_whoami_format   "#[fg=$fg,bg=$bg] {stdout} "
+                // command_whoami_interval "0"
+                //
+                // command_pwd_command  "pwd"
+                // command_pwd_format   "#[fg=$fg,bg=$bg] {stdout} "
+                // command_pwd_interval "20"
 
                 datetime          "#[fg=$fg,bg=$bg] {format} "
                 datetime_format   "%A, %d %b %Y %H:%M"
@@ -51,7 +52,7 @@ layout {
       pane command="fastfetch"
     }
     tab name=" dev"
-    tab name=" notes"
+    tab name=" notes" cwd="~/Obsidian"
     tab name=" info" {
       pane
       pane size=2 borderless=true {

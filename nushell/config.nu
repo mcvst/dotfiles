@@ -1,7 +1,25 @@
 $env.EDITOR = "nvim"
 
 $env.config.edit_mode = "vi"
-
+$env.config.show_banner = false
+$env.config.table.mode = "rounded"
+$env.config.cursor_shape.vi_insert = "line"
+$env.config.cursor_shape.vi_normal = "block"
+$env.config.keybindings = [
+  {
+    name: accept_completetion_hint
+    modifier: control
+    keycode: char_y
+    mode: [emacs, vi_normal, vi_insert]
+    event: {
+        until: [
+            { send: historyhintcomplete }
+            { send: menuright }
+            { send: right }
+        ]
+    }
+  }
+]
 alias vi = nvim
 alias vim = nvim
 alias lsa = ls -la
@@ -18,8 +36,8 @@ alias grbi = git rebase -i HEAD~n
 
 source ~/.cache/carapace/init.nu
 
-use ~/.cache/starship/init.nu
-
+mkdir ($nu.data-dir | path join "vendor/autoload")
+starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 # config.nu
 #
 # Installed by:
