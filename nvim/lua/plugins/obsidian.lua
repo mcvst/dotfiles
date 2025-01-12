@@ -28,6 +28,20 @@ return {
 					name = "work",
 					path = "~/Obsidian/work",
 				},
+				{
+					name = "no-vault",
+					path = function()
+						return assert(vim.fn.getcwd())
+					end,
+					overrides = {
+						notes_subdir = vim.NIL,
+						new_notes_location = "current_dir",
+						templates = {
+							folder = vim.NIL,
+						},
+						disable_frontmatter = true,
+					},
+				},
 			},
 
 			notes_subdir = "notes",
