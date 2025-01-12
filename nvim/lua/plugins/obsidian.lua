@@ -22,12 +22,19 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/vaults/personal",
+					path = "~/Obsidian/mcvault",
 				},
 				{
 					name = "work",
-					path = "~/vaults/work",
+					path = "~/Obsidian/work",
 				},
+			},
+
+			notes_subdir = "notes",
+			templates = {
+				folder = "templates",
+				date_format = "%Y-%m-%d-%a",
+				time_format = "%H:%M",
 			},
 
 			ui = {

@@ -15,6 +15,7 @@ return {
 					},
 				},
 			},
+			keymap = { preset = "default" },
 		},
 	},
 }

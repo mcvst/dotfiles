@@ -11,6 +11,10 @@ alias gst = git status
 alias cm = git checkout main
 alias ga = git add
 alias gc = git commit -m
+alias gp = git push
+alias gpr = git pull --rebase
+alias grb = git rebase
+alias grbi = git rebase -i HEAD~n
 
 source ~/.cache/carapace/init.nu
 
