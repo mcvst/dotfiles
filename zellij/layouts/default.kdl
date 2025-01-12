@@ -1,23 +1,61 @@
 layout {
-      default_tab_template {
-        // the default zellij tab-bar and status bar plugins
+    default_tab_template {
         pane size=1 borderless=true {
-            plugin location="zellij:compact-bar"
+            plugin location="file:~/.local/share/zjstatus/zjstatus.wasm" {
+
+                color_bg "#292e42"
+                color_fg "#c0caf5"
+                color_black "#1a1b26"
+                color_red "#f7768e"
+                color_green "#9ece6a"
+                color_yellow "#e0af68"
+                color_blue "#7aa2f7"
+                color_magenta "#bb9af7"
+                color_cyan "#7dcfff"
+                color_white "#a9b1d6"
+                color_orange "#ff9e64"
+
+                hide_frame_for_single_pane "true"
+
+                format_left  "{mode}#[fg=$white,bg=$black]  {session} #[fg=$fg,bg=$black]:: {tabs}"
+                format_right "{command_whoami}#[fg=$cyan,bg=$black]::{command_pwd}{datetime}"
+                format_space "#[bg=$black]"
+
+                mode_normal          "#[fg=$black,bg=$green]  "
+                mode_locked          "#[fg=$bg,bg=$blue]  "
+                mode_tmux            "#[fg=$bg,bg=$yellow]  "
+                mode_default_to_mode "normal"
+
+                tab_normal               "#[fg=$white,bg=$black]  {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator} "
+                tab_active               "#[fg=$cyan,bg=$bg,bold,italic]  {index} {name} {fullscreen_indicator}{sync_indicator}{floating_indicator} "
+                tab_fullscreen_indicator "□ "
+                tab_sync_indicator       "  "
+                tab_floating_indicator   "󰉈 "
+
+                command_whoami_command  "whoami"
+                command_whoami_format   "#[fg=$fg,bg=$bg] {stdout} "
+                command_whoami_interval "0"
+
+                command_pwd_command  "pwd"
+                command_pwd_format   "#[fg=$fg,bg=$bg] {stdout} "
+                command_pwd_interval "20"
+
+                datetime          "#[fg=$fg,bg=$bg] {format} "
+                datetime_format   "%A, %d %b %Y %H:%M"
+                datetime_timezone "Europe/Berlin"
+            }
         }
         children
     }
-    tab_template name="status-bar" {
-        pane size=1 borderless=true {
-          plugin location="zellij:tab-bar"
-        }
-        children
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
-    tab name="Home" {
+    tab name=" home" {
       pane command="fastfetch"
     }
-    tab name="Notes" cwd="~/Obsidian"
-    status-bar name="status"
+    tab name=" dev"
+    tab name=" notes"
+    tab name=" info" {
+      pane
+      pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+      }
+    }
 }
